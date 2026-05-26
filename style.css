@@ -19,24 +19,25 @@ body {
     width: 100%;
     max-width: 440px;
     padding: 24px;
-    position: relative;
 }
 
-/* SMOOTH SCREEN TRANSITIONS */
+/* DE OLIKA MENYERNA/SKÄRMARNA */
 .screen {
-    display: none;
-    opacity: 0;
-    transform: translateY(10px);
-    transition: opacity 0.4s ease, transform 0.4s ease;
-    width: 100%;
+    display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
+    animation: fadeIn 0.3s ease-out-in; /* Gör menybyten mjuka */
 }
 
-.screen.active {
-    display: flex;
-    opacity: 1;
-    transform: translateY(0);
+/* DENNA GÖR ATT MENYERNA FAKTISKT DÖLJS */
+.hidden {
+    display: none !important;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 /* LOGO & TEXT */
@@ -52,9 +53,9 @@ body {
 
 .accent { color: #38bdf8; }
 .subtitle { color: #64748b; margin-bottom: 40px; font-size: 1.1rem; }
-h2 { font-size: 2rem; margin-bottom: 24px; font-weight: 800; letter-spacing: -0.5px; }
+h2 { font-size: 2rem; margin-bottom: 24px; font-weight: 800; }
 
-/* GUI: 6 NIVEAU GRID */
+/* 6-NIVÅERS GRID */
 .level-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -72,7 +73,7 @@ h2 { font-size: 2rem; margin-bottom: 24px; font-weight: 800; letter-spacing: -0.
     font-size: 1.5rem;
     font-weight: 800;
     cursor: pointer;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.2s ease;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -111,17 +112,16 @@ h2 { font-size: 2rem; margin-bottom: 24px; font-weight: 800; letter-spacing: -0.
     height: 100%;
     background: linear-gradient(90deg, #38bdf8, #06b6d4);
     border-radius: 99px;
-    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: width 0.3s ease;
 }
 
-/* CARD & GAMEPLAY */
+/* SPELKORT & HJÄLPKORT */
 .game-header {
     width: 100%;
     display: flex;
     justify-content: space-between;
     color: #94a3b8;
     margin-bottom: 10px;
-    font-weight: 500;
 }
 
 .card {
@@ -134,11 +134,18 @@ h2 { font-size: 2rem; margin-bottom: 24px; font-weight: 800; letter-spacing: -0.
     text-align: center;
 }
 
+.help-card p {
+    margin-bottom: 15px;
+    color: #94a3b8;
+    font-size: 1.05rem;
+    line-height: 1.5;
+    text-align: left;
+}
+
 .question {
     font-size: 3.5rem;
     font-weight: 800;
     margin-bottom: 24px;
-    letter-spacing: -1px;
 }
 
 input[type="number"] {
@@ -152,12 +159,11 @@ input[type="number"] {
     text-align: center;
     outline: none;
     margin-bottom: 16px;
-    transition: border-color 0.2s;
 }
 
 input[type="number"]:focus { border-color: #38bdf8; }
 
-/* BUTTONS */
+/* KNAPPAR */
 .btn {
     width: 100%;
     padding: 16px;
@@ -170,20 +176,19 @@ input[type="number"]:focus { border-color: #38bdf8; }
 }
 
 .primary { background: #38bdf8; color: #0b0f19; }
-.primary:hover { background: #7dd3fc; transform: scale(1.01); }
-.primary:active { transform: scale(0.99); }
+.primary:hover { background: #7dd3fc; }
 
 .btn:disabled { background: #111827; color: #4b5563; border: 1px solid #1f2937; cursor: not-allowed; }
-.secondary { background: #1f2937; color: #f8fafc; }
+.secondary { background: #1f2937; color: #f8fafc; margin-bottom: 10px; }
+.secondary:hover { background: #2d3748; }
 .text-btn { background: transparent; color: #475569; margin-top: 12px; }
 .text-btn:hover { color: #94a3b8; }
 
-/* FEEDBACK & ANIMATIONS */
-.feedback { margin-top: 16px; min-height: 24px; font-weight: 600; font-size: 1.05rem; }
+/* FEEDBACK & SHAKE */
+.feedback { margin-top: 16px; min-height: 24px; font-weight: 600; }
 .correct { color: #34d399; }
 .wrong { color: #f87171; }
 
-/* Skaka kortet vid fel svar */
 .shake { animation: shake 0.4s ease-in-out; }
 @keyframes shake {
     0%, 100% { transform: translateX(0); }
@@ -191,17 +196,6 @@ input[type="number"]:focus { border-color: #38bdf8; }
     40%, 80% { transform: translateX(8px); }
 }
 
-/* VINSTSKÄRM GRAPHICS */
-.victory-card {
-    text-align: center;
-    padding: 20px;
-}
-.trophy {
-    font-size: 5rem;
-    margin-bottom: 16px;
-    animation: bounce 1s infinite alternate;
-}
-@keyframes bounce {
-    from { transform: translateY(0); }
-    to { transform: translateY(-12px); }
-}
+.victory-card { text-align: center; padding: 20px; }
+.trophy { font-size: 5rem; margin-bottom: 16px; animation: bounce 1s infinite alternate; }
+@keyframes bounce { from { transform: translateY(0); } to { transform: translateY(-12px); } }
