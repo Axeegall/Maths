@@ -150,7 +150,14 @@ function checkAnswer() {
             }
             updateMenuButtons();
             setTimeout(() => {
-                document.getElementById('victory-text').textContent = `Du klarade utmaningen på Nivå ${currentLevel}!`;
+                // Dynamisk 10/10-uppdatering: Visar hur många liv som klarade sig
+                document.getElementById('victory-lives-left').textContent = "❤️".repeat(lives);
+                
+                const txt = currentTheme === 'cyber' ? 
+                    `Systemet är helt under din kontroll på Nivå ${currentLevel}!` : 
+                    `Grottvalven skälver, du har erövrat Nivå ${currentLevel}!`;
+                document.getElementById('victory-text').textContent = txt;
+                
                 goToScreen('victory-screen');
             }, 500);
         } else {
@@ -221,13 +228,12 @@ answerInput.addEventListener('keydown', (e) => {
 const themeToggleBtn = document.getElementById('theme-toggle');
 let currentTheme = localStorage.getItem('mathgame-theme') || 'cyber';
 
-// Körs direkt vid start för att applicera rätt stil
 applyTheme(currentTheme);
 
 themeToggleBtn.addEventListener('click', () => {
     currentTheme = currentTheme === 'cyber' ? 'dungeon' : 'cyber';
     applyTheme(currentTheme);
-    localStorage.setItem('mathgame-theme', currentTheme); // Kommer ihåg valet!
+    localStorage.setItem('mathgame-theme', currentTheme); 
 });
 
 function applyTheme(theme) {
@@ -255,7 +261,7 @@ function applyTheme(theme) {
         if(helpTitle) helpTitle.textContent = 'Spelmanual';
         if(mapTitle) mapTitle.textContent = 'Välj Utmaning';
         if(submitBtnEl) submitBtnEl.textContent = 'Skicka Svar';
-        if(vicTitle) vicTitle.textContent = 'Utmaningen avklarad!';
+        if(vicTitle) vicTitle.textContent = 'UTMANINGEN AVKLARAD';
         if(vicIcon) vicIcon.textContent = '🏆';
         if(failTitle) failTitle.textContent = 'Systemfel...';
         if(failText) failText.textContent = 'Dina liv tog slut.';
@@ -269,7 +275,7 @@ function applyTheme(theme) {
         if(helpTitle) helpTitle.textContent = 'Äventyrarens Guide';
         if(mapTitle) mapTitle.textContent = 'Kartan';
         if(submitBtnEl) submitBtnEl.textContent = 'Kasta Besvärjelse';
-        if(vicTitle) vicTitle.textContent = 'Skatten är din!';
+        if(vicTitle) vicTitle.textContent = 'SKATTEN ÄR DIN';
         if(vicIcon) vicIcon.textContent = '💎';
         if(failTitle) failTitle.textContent = 'Äventyret slutar här...';
         if(failText) failText.textContent = 'Du föll i mörkret.';
