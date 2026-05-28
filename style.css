@@ -19,7 +19,6 @@ body {
     overflow-x: hidden;
 }
 
-/* Tvinga bort webbläsarens fula standardknappar */
 button {
     appearance: none;
     -webkit-appearance: none;
@@ -56,7 +55,7 @@ button {
 }
 
 /* =========================================================================
-   2. KNAPPAR (STILEN FRÅN DITT CAMPAIGN-LÄGE)
+   2. KNAPPAR
    ========================================================================= */
 .action-btn {
     display: block;
@@ -91,17 +90,13 @@ button {
     cursor: not-allowed;
 }
 
-/* Huvudknappar */
 .menu-btn-main {
     background: linear-gradient(45deg, #00ffcc, #0099ff);
     color: #020408;
     border: none;
 }
-.menu-btn-main:hover {
-    filter: brightness(1.1);
-}
+.menu-btn-main:hover { filter: brightness(1.1); }
 
-/* ARENA KNAPP */
 .battle-mode-btn {
     background: linear-gradient(45deg, #ff007f, #7f00ff) !important;
     border: none !important;
@@ -109,9 +104,7 @@ button {
     box-shadow: 0 0 15px rgba(255, 0, 127, 0.3);
     margin-top: 15px;
 }
-.battle-mode-btn:hover {
-    box-shadow: 0 0 20px rgba(255, 0, 127, 0.5);
-}
+.battle-mode-btn:hover { box-shadow: 0 0 20px rgba(255, 0, 127, 0.5); }
 
 .back-btn {
     background: rgba(255, 255, 255, 0.05);
@@ -122,6 +115,7 @@ button {
     font-size: 0.9rem;
     font-weight: bold;
 }
+.back-btn:hover { background: rgba(255, 255, 255, 0.15); }
 
 .reset-progress-btn {
     background: transparent;
@@ -132,6 +126,7 @@ button {
     font-size: 0.8rem;
     align-self: center;
 }
+.reset-progress-btn:hover { color: rgba(255, 255, 255, 0.6); }
 
 /* =========================================================================
    3. MENY, LOGO & GRID (NIVÅVAL)
@@ -142,6 +137,7 @@ button {
 .subtitle { text-align: center; opacity: 0.7; margin-bottom: 40px; line-height: 1.4; font-size: 0.95rem; }
 
 .screen-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.battle-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
 .trophy-counter { font-size: 1.1rem; font-weight: bold; background: rgba(0,0,0,0.3); padding: 5px 12px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); }
 #map-title { text-align: center; margin-bottom: 20px; font-size: 1.3rem; }
 
@@ -171,9 +167,10 @@ button {
 .level-btn.completed { border-color: #00ff99; background: rgba(0, 255, 153, 0.1); color: #00ff99; }
 
 /* =========================================================================
-   4. STANDARDSPELET DESIGN
+   4. STANDARDSPELET DESIGN (KAMPANJ)
    ========================================================================= */
 .game-header { display: flex; justify-content: space-between; margin-bottom: 10px; font-weight: bold; opacity: 0.9; }
+#lives-display { letter-spacing: 2px; }
 .progress-container { width: 100%; height: 8px; background: rgba(255,255,255,0.1); border-radius: 10px; overflow: hidden; margin-bottom: 25px; }
 .progress-bar { height: 100%; width: 0%; background: linear-gradient(90deg, #00ffcc, #0099ff); transition: width 0.2s; }
 .game-card { background: rgba(0, 0, 0, 0.2); border-radius: 16px; padding: 25px 15px; text-align: center; border: 1px solid rgba(255,255,255,0.05); }
@@ -189,7 +186,6 @@ button {
    5. BATTLE MODE ARENA & HP BARS
    ========================================================================= */
 .enemy-container { display: flex; align-items: center; background: rgba(255,255,255,0.03); padding: 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08); margin-bottom: 15px; }
-.enemy-avatar { font-size: 2.5rem; margin-right: 12px; }
 .enemy-info { flex-grow: 1; }
 
 .hp-bar-wrapper { width: 100%; height: 22px; background: rgba(0, 0, 0, 0.5); border-radius: 6px; position: relative; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.1); margin-top: 4px; }
@@ -199,9 +195,10 @@ button {
 .hp-text { position: absolute; width: 100%; text-align: center; left: 0; top: 50%; transform: translateY(-50%); font-size: 0.8rem; font-weight: bold; color: #fff; text-shadow: 1px 1px 2px #000; z-index: 2; }
 
 .battle-zone { background: rgba(0, 0, 0, 0.3); border-radius: 12px; padding: 15px; text-align: center; min-height: 120px; display: flex; flex-direction: column; justify-content: center; align-items: center; margin-bottom: 15px; border: 1px dashed rgba(255, 255, 255, 0.1); }
-.battle-feedback { font-style: italic; font-size: 1rem; color: #ffe08a; }
+.battle-feedback { font-style: italic; font-size: 1rem; color: #ffe08a; margin: 10px; }
 .battle-question { font-size: 2.2rem; font-weight: bold; margin-bottom: 10px; }
 #battle-answer-input { width: 100px; padding: 10px; font-size: 1.3rem; text-align: center; border-radius: 8px; border: 2px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); color: #fff; margin-right: 10px; }
+#battle-answer-input:focus { outline: none; border-color: #ff007f; }
 
 .inventory-section h4 { margin-bottom: 6px; font-size: 0.8rem; opacity: 0.7; letter-spacing: 1px; }
 .weapon-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 15px; }
@@ -210,6 +207,7 @@ button {
 .weapon-card .weapon-icon { font-size: 1.4rem; margin-bottom: 2px; }
 .weapon-card .weapon-name { font-weight: bold; font-size: 0.75rem; color: #fff; }
 .weapon-card .weapon-desc { font-size: 0.6rem; opacity: 0.5; margin-top: 2px; line-height: 1.2; }
+
 .player-battle-hud { background: rgba(0, 0, 0, 0.2); padding: 10px; border-radius: 10px; }
 
 /* =========================================================================
@@ -217,6 +215,44 @@ button {
    ========================================================================= */
 .victory-card, .fail-card { text-align: center; padding: 20px 0; }
 .victory-icon, .fail-icon { font-size: 4rem; margin-bottom: 15px; }
-.victory-card h2 { color: #00ff99; }
-.fail-card h2 { color: #ff3366; }
-.fail-buttons { display: flex; flex-direction: column; }
+.victory-card h2 { color: #00ff99; margin-bottom: 10px; }
+.fail-card h2 { color: #ff3366; margin-bottom: 10px; }
+.victory-stats { margin-bottom: 15px; }
+.fail-buttons { display: flex; flex-direction: column; gap: 5px; margin-top: 15px; }
+
+/* =========================================================================
+   7. ANIMATIONER & EFFEKTER
+   ========================================================================= */
+.shake {
+    animation: shakeAnim 0.3s ease-in-out;
+}
+@keyframes shakeAnim {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-8px); }
+    75% { transform: translateX(8px); }
+}
+
+.success-pop {
+    animation: popAnim 0.3s ease-out;
+}
+@keyframes popAnim {
+    50% { transform: scale(1.05); }
+}
+
+.enemy-hit {
+    animation: flashRed 0.3s ease-in-out;
+}
+@keyframes flashRed {
+    0%, 100% { filter: brightness(1); transform: scale(1); }
+    50% { filter: brightness(1.5) hue-rotate(-50deg) saturate(3); transform: scale(0.95); }
+}
+
+.enemy-avatar {
+    font-size: 2.5rem;
+    margin-right: 12px;
+    animation: floatingEnemy 3s ease-in-out infinite;
+}
+@keyframes floatingEnemy {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+}
